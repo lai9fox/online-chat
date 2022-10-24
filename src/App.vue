@@ -6,4 +6,9 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped></style>
+<style lang="less">
+body, html {
+  padding: 0;
+  margin: 0;
+}
+</style>

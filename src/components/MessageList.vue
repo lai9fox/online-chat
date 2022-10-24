@@ -1,10 +1,9 @@
 <template>
-  <div>
-    User
-  </div>
+
 </template>
 
 <script setup>
+asd
 </script>
 
 <style></style>
