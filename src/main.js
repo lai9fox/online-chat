@@ -1,17 +1,13 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
 
-import 'virtual:svg-icons-register'
-import SvgIcon from '@/components/SvgIcon.vue';
+import 'virtual:svg-icons-register';
 
-import BaseComponents from '@/components/base';
+import GlobalComponents from '@/components/base/index';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.component('SvgIcon', SvgIcon);
-console.log(BaseComponents);
+app.use(GlobalComponents).use(router);
 
-app.use(router)
-
-app.mount('#app')
+app.mount('#app');
