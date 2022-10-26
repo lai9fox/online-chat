@@ -16,9 +16,11 @@ import SliderBar from '@/components/SliderBar.vue';
 
 .slider {
   width: 320px;
+  height: 100vh;
 }
 
 .chat-body {
   flex: 1;
+  background-color: @bg-dk1;
 }
 </style>

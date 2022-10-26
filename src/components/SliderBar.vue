@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="SliderBar['container']">
     <div :class="SliderBar['header']">
       <img src="src/assets/image/user.png" alt="User Profile Gravator" :class="SliderBar['user-gravator']">
       <div :class="SliderBar['header-svg']">
@@ -25,10 +25,10 @@
         </div>
       </div>
     </div>
-    <div :class="SliderBar['message']">
+    <div :class="[SliderBar['message'], SliderBar['custom-scroller']]">
       <div :class="SliderBar['message-title']">Message</div>
       <div :class="SliderBar['message-list']">
-
+        <ContactList v-for="contactInfo in contactInfoRec" :key="contactInfo.contactId" :contactInfo="contactInfo" />
       </div>
     </div>
   </div>
@@ -36,17 +36,18 @@
 
 <script setup>
 import { reactive } from 'vue';
-const storiesUsers = [];
-for (let i = 1; i <= 4; i++) {
-  storiesUsers.push({
-    gravator: `src/assets/image/user-${i}.png`,
-    userId: `user-${i}`,
-  });
-}
-const storiesUsersRec = reactive(storiesUsers);
+import ContactList from '@/components/ContactList.vue';
+import dataGenerator from '@/mock/dataGenerator.js';
+
+const storiesUsersRec = reactive(dataGenerator.storiesUsers());
+const contactInfoRec = reactive(dataGenerator.contactInfo());
+
 </script>
 
 <style lang="less" module="SliderBar">
+.container {
+  position: relative;
+}
 .header {
   height: 64px;
   background-color: @bg-dk1;
@@ -81,8 +82,7 @@ const storiesUsersRec = reactive(storiesUsers);
 .stories {
   height: 144px;
   background-color: @bg-dk1;
-  // padding: 24px;
-  margin: 24px;
+  padding: 24px;
   box-sizing: border-box;
   border-top: 1px solid @border-gray;
   overflow: hidden;
@@ -114,6 +114,11 @@ const storiesUsersRec = reactive(storiesUsers);
 .message {
   background-color: @bg-dk1;
   border-top: 1px solid @border-gray;
+  position: absolute;
+  width: 100%;
+  top: 284px;
+  bottom: 0;
+  overflow-y: scroll;
 
   &-title {
     height: 56px;
@@ -125,7 +130,18 @@ const storiesUsersRec = reactive(storiesUsers);
   }
 
   &-list {
-    box-sizing: border-box;
+    background-color: @bg-dk1;
+  }
+}
+.custom-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: @bg-scroller;
+  &::-webkit-scrollbar  {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: @bg-scroller;
+    border-radius: 3px;
   }
 }
 </style>
