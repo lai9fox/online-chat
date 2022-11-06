@@ -1,7 +1,7 @@
 <template>
   <div :class="SliderBar['container']">
     <div :class="SliderBar['header']">
-      <img src="src/assets/image/user.png" alt="User Profile Gravator" :class="SliderBar['user-gravator']">
+      <img src="/src/assets/image/user.png" alt="User Profile Gravator" :class="SliderBar['user-gravator']">
       <div :class="SliderBar['header-svg']">
         <BaseIcon name="new-chat" />
         <BaseIcon name="more" />
