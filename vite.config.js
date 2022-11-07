@@ -10,7 +10,10 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/demo/online-chat/',
+  base: '/online-chat/',
+  build: {
+    outDir: 'docs'
+  },
   plugins: [
     createSvgIconsPlugin({
       iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')],
