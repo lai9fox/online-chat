@@ -28,22 +28,48 @@
     <div :class="[SliderBar['message'], SliderBar['custom-scroller']]">
       <div :class="SliderBar['message-title']">Message</div>
       <div :class="SliderBar['message-list']">
-        <ContactList v-for="contactInfo in contactInfoRec" :key="contactInfo.contactId" :contactInfo="contactInfo" />
+        <ContactList 
+          v-for="(contactInfo, index) in contactInfoRec"
+          :key="contactInfo.contactId"
+          :contactInfo="contactInfo"
+          @click="contactListSelect(index, contactInfo)"
+          :class="{ selected: chatIndex === index }"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import ContactList from '@/components/ContactList.vue';
 import dataGenerator from '@/mock/dataGenerator.js';
+
+const emit = defineEmits([
+  'chatUserSelect'
+])
+const router = useRouter();
 
 const storiesUsersRec = reactive(dataGenerator.storiesUsers());
 const contactInfoRec = reactive(dataGenerator.contactInfo());
 
-</script>
+/**
+ * 选中的聊天对象
+ */
+const chatIndex = ref(-1);
+function contactListSelect(index, contactInfo) {
+  chatIndex.value = index;
+  emit('chatUserSelect', contactInfo);
+  router.push('/chat');
+}
 
+</script>
+<style lang="less">
+.selected {
+  background-color: @bg-dk3;
+}
+</style>
 <style lang="less" module="SliderBar">
 .container {
   position: relative;

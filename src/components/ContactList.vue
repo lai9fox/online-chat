@@ -77,6 +77,9 @@ const lastContactTime = computed(() => {
   color: @text-white;
   display: flex;
   cursor: pointer;
+  &:hover {
+    background: @bg-dk3;
+  }
 }
 .gravator {
   width: 48px;
