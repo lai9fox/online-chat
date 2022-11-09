@@ -1,7 +1,7 @@
 <template>
   <div :class="HomePage['home']">
     <SliderBar :class="HomePage['slider']" @chatUserSelect="notice" />
-    <RouterView :messageList="contactInfoRef" />
+    <RouterView :contactInfo="contactInfoRef" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import { reactive, ref } from 'vue';
 import SliderBar from '@/components/SliderBar.vue';
 const contactInfoRef = ref([]);
 function notice(contactInfo) {
-  contactInfoRef.value = contactInfo.message;
+  contactInfoRef.value = contactInfo;
 }
 </script>
 
