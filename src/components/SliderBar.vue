@@ -121,9 +121,15 @@ function contactListSelect(index, contactInfo) {
   }
 
   &-list {
+    width: 400px;
+    // overflow: hidden;
     display: flex;
+    // white-space: no-wrap;
   }
   &-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 48px;
     height: 48px;
     margin-right: 8px;

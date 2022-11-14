@@ -36,10 +36,11 @@ const props = defineProps({
 .input {
   color: @text-white;
   background-color: transparent;
-  // width: 100%;
   flex: 1;
   height: 100%;
   border: none;
   outline: none;
+  line-height: 20px;
+  font-size: 14px;
 }
 </style>
