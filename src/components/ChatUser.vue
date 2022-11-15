@@ -50,9 +50,20 @@
 <script setup>
 import MessageList from '@/components/MessageList.vue';
 import ContactInfo from '@/components/ContactInfo.vue';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
+import { useRouter } from 'vue-router';
 const props = defineProps({
   contactInfo: Object,
+})
+
+// watch(() => props.contactInfo.contactId, (val) => {
+//   console.log(val);
+// })
+const router = useRouter();
+watchEffect(() => {
+  if (!props.contactInfo.contactId) {
+    router.push('/');
+  }
 })
 
 /**
