@@ -21,7 +21,7 @@
           <BaseIcon name="plus" />
         </div>
         <div v-for="sUser in storiesUsersRec" :class="SliderBar['stories-user']">
-          <img :src="sUser.gravator" alt="user gravator">
+          <img :src="getImage(sUser.gravator)" alt="user gravator">
         </div>
       </div>
     </div>
@@ -45,6 +45,7 @@ import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import ContactList from '@/components/ContactList.vue';
 import dataGenerator from '@/mock/dataGenerator.js';
+import getImage from '../assets/image';
 
 const emit = defineEmits([
   'chatUserSelect'

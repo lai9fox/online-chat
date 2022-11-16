@@ -1,7 +1,7 @@
 <template>
   <div :class="Contact['container']">
     <div :class="Contact['gravator']">
-      <img :src="contactInfo.userGravatorURI" alt="user gravator">
+      <img :src="getImage(contactInfo.userGravatorURI)" alt="user gravator">
     </div>
     <div :class="Contact['info']">
       <div :class="Contact['title']">
@@ -22,6 +22,7 @@
 
 <script setup>
 import { computed } from 'vue';
+import getImage from '../assets/image';
 const props = defineProps({
   contactInfo: {
     type: Object,
