@@ -1,7 +1,7 @@
 <template>
   <div :class="ChatUser['content-body']">
     <div :class="ChatUser['header']">
-      <img :src="contactInfo.userGravatorURI" :class="ChatUser['gravator']" alt="user gravator" />
+      <img :src="getImage(contactInfo.userGravatorURI)" :class="ChatUser['gravator']" alt="user gravator" />
       <div :class="ChatUser['username']">
         {{ contactInfo.userName }}
       </div>
@@ -52,6 +52,7 @@ import MessageList from '@/components/MessageList.vue';
 import ContactInfo from '@/components/ContactInfo.vue';
 import { ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
+import getImage from '../assets/image';
 const props = defineProps({
   contactInfo: Object,
 })
